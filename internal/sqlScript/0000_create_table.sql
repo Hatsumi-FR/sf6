@@ -16,6 +16,40 @@ create table characters
     power         int
 );
 
+create table combos
+(
+    name         varchar not null,
+    total_damage int,
+    total_frame  int,
+    difficulty   int,
+    cost         int,
+    id           serial
+        constraint combos_pk
+            primary key
+);
+
+create table inputs
+(
+    name            varchar,
+    picture_url     varchar,
+    frame           int,
+    start_up_frame  int,
+    active_frame    int,
+    recovery_frame  int,
+    damage          int,
+    damage_on_block int,
+    id              serial
+        constraint inputs_pk
+            primary key
+);
+
+create unique index inputs_id_uindex
+    on inputs (id);
+
+
+create unique index combos_id_uindex
+    on combos (id);
+
 create unique index characters_id_uindex
     on characters (id);
 
